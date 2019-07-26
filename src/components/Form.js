@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyboard } from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import {firebase_login, firebase_register} from 'c:/Users/user/react-native/login/reducer/App_reducer';
 import {db, firebaseAuth, storage} from '../../reducer/Firebase';
+import {firebase_login, firebase_register} from '../../reducer/App_reducer';
+
 export default class Form extends Component {
    constructor(props){        
      super(props);        

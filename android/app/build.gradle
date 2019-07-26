@@ -142,24 +142,25 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
-    signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
-    }
+
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            debuggable true
+            jniDebuggable true
         }
         release {
+            debuggable false
+            jniDebuggable false
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+          //  signingConfig signingConfigs.debug
+          //  minifyEnabled enableProguardInReleaseBuilds
+          //  proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        foss {
+            debuggable false
+            jniDebuggable false
+            // signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -188,7 +189,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-naver-login')
+    implementation project(':react-native-naver-login')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
