@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyb
 import {Actions} from 'react-native-router-flux';
 
 import Form from '../components/Form';
-import {db, firebaseAuth, storage} from 'c:/Users/user/react-native/login/reducer/Firebase';
+import {db, firebaseAuth, storage} from '../../reducer/Firebase';
 import { NaverLogin, getProfile } from 'react-native-naver-login';
 
 const initials = {

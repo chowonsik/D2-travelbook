@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyboard } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {firebase_login, firebase_register} from 'c:/Users/user/react-native/login/reducer/App_reducer';
-
+import {db, firebaseAuth, storage} from '../../reducer/Firebase';
 export default class Form extends Component {
    constructor(props){        
      super(props);        
@@ -23,6 +23,7 @@ export default class Form extends Component {
 //   }
 
 saveData =()=>{
+    //Actions.jump("main");
     const {email,password} = this.state;
 
     if(this.props.type !== 'Login')
@@ -31,15 +32,16 @@ saveData =()=>{
         .catch((error) => {
             alert(error);
         })
-    //   this.saveLoginInfo();
     }
     else if(this.props.type == 'Login')
     {
-        firebase_login(email, password)
+        firebase_login(email, password).then(function() {
+            Actions.main();
+          }
+        )
         .catch((error) => {
             alert(error);
         })
-        // this.saveLoginInfo();
     }
 }
 
