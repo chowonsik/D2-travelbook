@@ -40,8 +40,8 @@ export default class UserTLview extends Component {
   }
 
   //CRUD 화면 오프너
-  crudOpener() {
-    Actions.crud()
+  crudOpener(no) {
+    Actions.crud(({item: no}))
   }
 
   render() {
@@ -52,7 +52,7 @@ export default class UserTLview extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
             <View style={{ padding: 10, margin: 10, backgroundColor: '#ffffff', borderRadius: 10, borderWidth: 2, borderColor: 'black' }}>
-              <TouchableOpacity onPress={() => this.crudOpener()}>
+              <TouchableOpacity onPress={() => this.crudOpener(item.Trip_No)}>
                 <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>
                   {item.Trip_No}
                 </Text>
