@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Image, Text, View, FlatList, ActivityIndicator} from 'react-native';
 import MainDashHeader from '../components/MainDashHeader';
 import UserTLview from '../components/UserTLview';
-//import MainDashFooter from '../components/MainDashFooter';
+import MainDashFooter from '../components/MainDashFooter';
 
 class UserTL extends Component {
 
@@ -20,6 +20,7 @@ class UserTL extends Component {
         <View style={styles.content}>
           <UserTLview />
         </View>
+        <MainDashFooter />
       </View>
     );
   }

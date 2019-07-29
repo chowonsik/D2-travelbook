@@ -19,13 +19,19 @@ class MainDashFooter extends Component {
     Actions.userTL()
   }
 
+
+  //다른사람타임라인화면 보내는 함수
+  OtherTLOpener(){
+    Actions.mainone()
+  }
+
   render() {
     return (
       <View>
         <View style={styles.footer}>
           <MainSafeMargin />
-          <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/my-icon.png')} style={{
+          <TouchableOpacity onPress={() => this.OtherTLOpener()} style={styles.footerIcon}>
+            <Image source={require('../imgs/people-icon.png')} style={{
               width: 26,
               height: 24,
             }} />
@@ -37,7 +43,7 @@ class MainDashFooter extends Component {
             }} />
           </View>
           <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/people-icon.png')} style={{
+            <Image source={require('../imgs/my-icon.png')} style={{
               width: 26,
               height: 26,
             }} />

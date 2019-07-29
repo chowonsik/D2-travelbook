@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, Image, Text, View} from 'react-native';
+import {StyleSheet, Image, Text, View, FlatList, ActivityIndicator} from 'react-native';
 import MainDashHeader from '../components/MainDashHeader';
+import OtherTLview from '../components/OtherTLview';
 import MainDashFooter from '../components/MainDashFooter';
 
 class MainOne extends Component {
@@ -8,7 +9,7 @@ class MainOne extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      text: 'Google Map Setting'
+      text: 'TimeLine ListView Setting'
     };
   }
 
@@ -17,7 +18,7 @@ class MainOne extends Component {
       <View style={styles.wrap}>
         <MainDashHeader />
         <View style={styles.content}>
-          <Text style={styles.welcome}>{this.state.text}</Text>
+          <OtherTLview />
         </View>
         <MainDashFooter />
       </View>
