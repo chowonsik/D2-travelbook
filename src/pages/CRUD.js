@@ -8,7 +8,7 @@ class CRUD extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: 'CRUD Screen'
+            text: 'CRUD Screen',
         };
     }
 

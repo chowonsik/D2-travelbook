@@ -8,12 +8,12 @@ export default class UserTLview extends Component {
     super();
     this.state = {
       data: [],
-      page: 1
+      page: 0
     }
   }
 
   getData = async () => {
-    const response = await fetch('http://jsonplaceholder.typicode.com/photos?_limit&page=10&_page=' + this.state.page);
+    const response = await fetch('http://52.78.131.123/trip/' + this.state.page);
 
     const data = await response.json();
 
@@ -29,11 +29,11 @@ export default class UserTLview extends Component {
 
   myFooter = () => {
     return (
-      <View style={{padding:10}}>
+      <View style={{ padding: 10 }}>
         <TouchableOpacity
-        style={{backgroundColor:'#ffffff',alinItems:'center',borderRadius:10,padding:10,borderWidth:1,borderColor:"black",width:'100%'}}
-        onPress={this.getData}>
-          <Text style={{fontWeight:"bold",fontSize:20,alinItems:'center'}}>더 보기</Text>
+          style={{ backgroundColor: '#ffffff', alinItems: 'center', borderRadius: 10, padding: 10, borderWidth: 1, borderColor: "black", width: '100%' }}
+          onPress={this.getData}>
+          <Text style={{ fontWeight: "bold", fontSize: 20, alinItems: 'center' }}>더 보기</Text>
         </TouchableOpacity>
       </View>
     )
@@ -53,10 +53,16 @@ export default class UserTLview extends Component {
           renderItem={({ item }) =>
             <View style={{ padding: 10, margin: 10, backgroundColor: '#ffffff', borderRadius: 10, borderWidth: 2, borderColor: 'black' }}>
               <TouchableOpacity onPress={() => this.crudOpener()}>
-                <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>{item.id}</Text>
-                <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>{item.title}</Text>
-                <Image source={{ uri: item.url }}
-                  style={{ width: '100%', height: 300 }} />
+                <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>
+                  {get_Trip_No = item.Trip_No}
+                </Text>
+
+                <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>
+                  {item.Trip_Title}
+                </Text>
+
+                <Image source={{ uri: item.Trip_Img }}
+                  style={{ width: 300, height: 300 }} />
               </TouchableOpacity>
             </View>
           }
