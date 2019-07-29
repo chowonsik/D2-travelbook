@@ -54,7 +54,7 @@ export default class UserTLview extends Component {
             <View style={{ padding: 10, margin: 10, backgroundColor: '#ffffff', borderRadius: 10, borderWidth: 2, borderColor: 'black' }}>
               <TouchableOpacity onPress={() => this.crudOpener()}>
                 <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>
-                  {get_Trip_No = item.Trip_No}
+                  {item.Trip_No}
                 </Text>
 
                 <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5 }}>
