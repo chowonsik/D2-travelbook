@@ -3,7 +3,7 @@ import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import MainSafeMargin from './MainSafeMargin';
 import { Actions } from 'react-native-router-flux';
 
-class MainDashFooter extends Component {
+class CRUDFooter extends Component {
 
   constructor(props) {
     super(props);
@@ -14,34 +14,36 @@ class MainDashFooter extends Component {
 
   }
 
-  //유저타임라인화면 보내는 함수
-  UserTLOpener() {
-    Actions.userTL()
+  //CRUD에 필요한 함수 설정
+  /*
+  //타임라인화면 보내는 함수
+  timelineOpener() {
+    Actions.timeline()
   }
+
+  //Others 보내는 함수
+  othersOpener(){
+    Actions.others()
+  }
+  */
 
   render() {
     return (
       <View>
         <View style={styles.footer}>
           <MainSafeMargin />
-          <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/my-icon.png')} style={{
-              width: 26,
-              height: 24,
-            }} />
-          </TouchableOpacity>
           <View style={styles.footerIcon}>
-            <Image source={require('../imgs/plus-icon.png')} style={{
+            <Image source={require('../imgs/edit-icon.png')} style={{
               width: 28,
               height: 28,
             }} />
           </View>
-          <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/people-icon.png')} style={{
+          <View style={styles.footerIcon}>
+            <Image source={require('../imgs/bin-icon.png')} style={{
               width: 26,
               height: 26,
             }} />
-          </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.footerIndicator}></View>
       </View>
@@ -67,4 +69,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MainDashFooter
+export default CRUDFooter

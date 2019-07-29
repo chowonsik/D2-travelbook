@@ -46,17 +46,17 @@ class MainDashHeader extends Component {
 const styles = StyleSheet.create({
     statusBar: {
         height: 44,
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#ffffff'
     },
     header: {
         textAlign: 'center',
         height: 56,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#ffffff',
         flexDirection: 'row'
     },
     plusBtn: {
         width: 60,
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#ffffff'
     },
     logo: {
         flex: 1,
@@ -65,14 +65,7 @@ const styles = StyleSheet.create({
     },
     settingBtn: {
         width: 60,
-        backgroundColor: '#f5f5f5'
-    },
-    title: {
-        width: '100%',
-        height: '9%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: '#ffffff'
     }
 });
 

@@ -5,8 +5,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Main from './pages/Main';
 import WriteDiary from './pages/WriteDiary';
-import TimeLine from './pages/TimeLine';
+import UserTL from './pages/UserTL';
 import MainOne from './pages/MainOne';
+import CRUD from './pages/CRUD';
 import Others from './pages/Others';
  
 export default class Routes extends Component {
@@ -23,7 +24,8 @@ export default class Routes extends Component {
                 <Scene key="signup" component={Signup} title="Sign up"/>
                 <Scene key="main" component={Main} title="Main" hideNavBar/>
                 <Scene key="mainone" component={MainOne} title="MainOne"/>
-                <Scene key="timeline" component={TimeLine} title="TimeLine"/>
+                <Scene key="userTL" component={UserTL} title="UserTL"/>
+                <Scene key="crud" component={CRUD} title="CRUD"/>
                 <Scene key="others" component={Others} title="Others"/>
                 <Scene key="writediary" component={WriteDiary} title="WriteDiary"/>
                 </Stack>

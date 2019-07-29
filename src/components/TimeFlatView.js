@@ -5,10 +5,12 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
- 
+
 export default class TimeFlatView extends Component {
   constructor() {
     super();
@@ -67,32 +69,41 @@ export default class TimeFlatView extends Component {
       </View>
     );
   }
+
+  //CRUD 화면 오프너
+  crudOpener() {
+    Actions.crud()
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
         {this.state.loading ? (
           <ActivityIndicator size="large" />
         ) : (
-          <FlatList
-            style={{ width: '100%' }}
-            keyExtractor={(item, index) => index}
-            data={this.state.serverData}
-            onEndReached={() => this.loadMoreData()}
-            onEndReachedThreshold={0.5}
-            renderItem={({ item, index }) => (
-              <View style={styles.item}>
-                <Text style={styles.text}>
-                  {item.id}
-                  {'.'}
-                  {item.title.toUpperCase()}
-                </Text>
-              </View>
-            )}
-            ItemSeparatorComponent={() => <View style={styles.separator} />}
-            ListFooterComponent={this.renderFooter.bind(this)}
+            <FlatList
+              style={{ width: '100%' }}
+              keyExtractor={(item, index) => index}
+              data={this.state.serverData}
+              onEndReached={() => this.loadMoreData()}
+              onEndReachedThreshold={0.5}
+              renderItem={({ item, index }) => (
+                <View style={styles.item}>
+                  <TouchableOpacity onPress={() => this.crudOpener()}>
+                    <Text style={styles.text}>
+                      {item.id}
+                      {'.'}
+                      {item.title.toUpperCase()}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+              ItemSeparatorComponent={() => <View style={styles.separator} />}
+              ListFooterComponent={this.renderFooter.bind(this)}
             //Adding Load More button as footer component
-          />
-        )}
+            />
+          )}
       </View>
     );
   }

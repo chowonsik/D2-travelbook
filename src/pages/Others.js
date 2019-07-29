@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image, Text, View, FlatList, ActivityIndicator} from 'react-native';
 import MainDashHeader from '../components/MainDashHeader';
-import OtherFlatView from '../components/OtherFlatView';
+import UserTLview from '../components/UserTLview';
 //import MainDashFooter from '../components/MainDashFooter';
 
 class Others extends Component {
@@ -18,7 +18,7 @@ class Others extends Component {
       <View style={styles.wrap}>
         <MainDashHeader />
         <View style={styles.content}>
-          <OtherFlatView />
+          <UserTLview />
         </View>
       </View>
     );

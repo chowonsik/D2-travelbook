@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image, Text, View, FlatList, ActivityIndicator} from 'react-native';
 import MainDashHeader from '../components/MainDashHeader';
-import TimeFlatView from '../components/TimeFlatView';
+import UserTLview from '../components/UserTLview';
 //import MainDashFooter from '../components/MainDashFooter';
 
-class TimeLine extends Component {
+class UserTL extends Component {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class TimeLine extends Component {
       <View style={styles.wrap}>
         <MainDashHeader />
         <View style={styles.content}>
-          <TimeFlatView />
+          <UserTLview />
         </View>
       </View>
     );
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TimeLine
+export default UserTL
