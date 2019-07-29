@@ -2,7 +2,9 @@
 
 ## how to build 빌드 하는법
 
-*
+* 서버 Github 주소
+https://github.com/jhktm/D2_react_native-travel_app_Server
+
 android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어있어야합니다.
 
 
