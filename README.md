@@ -11,7 +11,8 @@ android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어�
 1. git clone 
 2. cd D2....
 3. npm install 
-4. react-native run-android
+4. react-native link react-native-maps
+5. react-native run-android
 
 
 
