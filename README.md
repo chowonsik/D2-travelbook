@@ -5,13 +5,13 @@
 * 서버 Github 주소
 https://github.com/jhktm/D2_react_native-travel_app_Server
 
-android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어있어야합니다.
+* init android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어있어야합니다.
 
-
+* 빌드 biuld
 1. git clone 
 2. cd D2....
 3. npm install 
-4. react-native link react-native-maps
+4. react-native link , react-native link react-native-maps
 5. react-native run-android
 
 
