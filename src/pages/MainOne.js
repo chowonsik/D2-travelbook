@@ -1,19 +1,28 @@
-import React, {Component} from 'react';
-import {StyleSheet, Image, Text, View, FlatList, ActivityIndicator} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Image, Text, View, FlatList, ActivityIndicator } from 'react-native';
 import MainDashHeader from '../components/MainDashHeader';
 import OtherTLview from '../components/OtherTLview';
 import MainDashFooter from '../components/MainDashFooter';
-
+import { db, firebaseAuth, storage } from '../../reducer/Firebase';
 class MainOne extends Component {
 
   constructor(props) {
     super(props);
-    this.state ={
-      text: 'TimeLine ListView Setting'
+    this.state = {
+      text: 'TimeLine ListView Setting',
+      currentUser: null
+
     };
   }
+  componentDidMount() {
+    this.setState({ currentUser: this.props.currentUser.uid});
+    //alert(JSON.stringify(this.props.currentUser.uid));
+  }
+
+
 
   render() {
+
     return (
       <View style={styles.wrap}>
         <MainDashHeader />

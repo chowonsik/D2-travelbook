@@ -1,16 +1,20 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Animated, Image, Dimensions, Button } from "react-native";
+import { StyleSheet, Text, View, Animated, Image, Dimensions, Button, TouchableOpacity } from "react-native";
 
 
 import MapView, { Polyline } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
+
+import { Actions } from 'react-native-router-flux';
 
 import getDirections from 'react-native-google-maps-directions'
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
+
+
 
 export default class AnyMap extends Component {
 
@@ -42,9 +46,6 @@ export default class AnyMap extends Component {
         }
     }
 
-
-
-
     //lastItem = this.state.markers.length - 1;
 
     componentWillMount() {
@@ -53,7 +54,7 @@ export default class AnyMap extends Component {
     }
     componentDidMount() {
 
-        fetch('http://52.78.131.123/info/'+this.props.item)
+        fetch('http://52.78.131.123/info/' + this.props.item)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
@@ -79,9 +80,9 @@ export default class AnyMap extends Component {
                         longitude: this.state.dataSources[i].Info_Longitude
                     }
                 }
-                for (var i = 1; i < this.state.dataSources.length-1; i++) {
-                   
-                   
+                for (var i = 1; i < this.state.dataSources.length - 1; i++) {
+
+
                 }
 
                 this.state.region = {
@@ -161,6 +162,11 @@ export default class AnyMap extends Component {
         getDirections(data)
     }
 
+    saveDataDetail = (marker) => {
+        Actions.detail({ marker: marker });
+
+    }
+
     render() {
 
         const interpolations = this.state.markers.map((marker, index) => {
@@ -213,7 +219,7 @@ export default class AnyMap extends Component {
                     <MapViewDirections
                         origin={this.state.coordi[0]}
                         waypoints={
-                            (this.state.coordi.length > 2) ? this.state.coordi.slice(1, -1): null
+                            (this.state.coordi.length > 2) ? this.state.coordi.slice(1, -1) : null
                         }
                         destination={this.state.coordi[this.state.coordi.length - 1]}
                         apikey={"AIzaSyDyoS36lwCGrpT2s0FzrsU1b2Nf8GjFKo0"}
@@ -246,11 +252,16 @@ export default class AnyMap extends Component {
                 >
                     {this.state.markers.map((marker, index) => (
                         <View style={styles.card} key={index}>
+                            <TouchableOpacity  style={styles.cardImage} onPress={() => this.saveDataDetail(marker)}>
                             <Image
                                 source={marker.image}
                                 style={styles.cardImage}
                                 resizeMode="cover"
                             />
+                            </TouchableOpacity>
+                            
+
+
                             <View style={styles.textContent}>
                                 <Text numberOfLines={1} style={styles.cardDescription}>
                                     {marker.description}

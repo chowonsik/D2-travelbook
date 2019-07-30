@@ -37,7 +37,7 @@ saveData =()=>{
     else if(this.props.type == 'Login')
     {
         firebase_login(email, password).then(function() {
-            Actions.mainone();
+            Actions.mainone({currentUser: firebaseAuth.currentUser});
           }
         )
         .catch((error) => {

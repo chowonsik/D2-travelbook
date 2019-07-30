@@ -8,6 +8,7 @@ import WriteDiary from './pages/WriteDiary';
 import UserTL from './pages/UserTL';
 import MainOne from './pages/MainOne';
 import CRUD from './pages/CRUD';
+import Detail from './pages/detail'
  
 export default class Routes extends Component {
     render() {
@@ -26,6 +27,7 @@ export default class Routes extends Component {
                 <Scene key="userTL" component={UserTL} title="UserTL" hideNavBar/>
                 <Scene key="crud" component={CRUD} title="CRUD"/>
                 <Scene key="writediary" component={WriteDiary} title="WriteDiary"/>
+                <Scene key="detail" component={Detail} title="detail"/>
                 </Stack>
                 
             </Router>
