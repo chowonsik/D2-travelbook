@@ -16,13 +16,8 @@ class MainOne extends Component {
   }
   componentDidMount() {
     var uid = firebaseAuth.currentUser.uid;
-    alert(uid);
-    //this.setState({ currentUser: firebaseAuth.currentUser.uid});
-    //alert(JSON.stringify(firebaseAuth.currentUser.uid));
-    //alert(firebaseAuth.currentUser.uid);
+    
   }
-
-
 
   render() {
 

@@ -29,7 +29,7 @@ export default class detail extends Component {
           </View>
 
           <View style={styles.footer}>
-            <Text >Enjoy our app</Text>
+            <Text >{this.props.marker.description}</Text>
           </View>
         
       </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black'
+    backgroundColor: 'white'
   },
   content: {
     flex: 6,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black'
+    backgroundColor: 'white'
   },
   DetailImage: {
     flex: 1,

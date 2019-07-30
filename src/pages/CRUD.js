@@ -14,29 +14,26 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-
-
 export default class AnyMap extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             dataSources: [],
             markers: [{
                 coordinate: {
-                    latitude: 0.0000000,
-                    longitude: 0.0000000,
+                    latitude: 37.359426,
+                    longitude: 127.104886,
                 },
-                description: "",
+                description: "내용",
                 image: {
                     uri: "https://mblogthumb-phinf.pstatic.net/MjAxNzEyMThfMjQ1/MDAxNTEzNjA3MTcwNTg4.f9D3x971p8iDr_ox3nOQZmp2bHHA3YEtAvWI6-Zq6aAg.1E7HSp02TKDPZwC1wdciQdKiMEEzo0TvuY0ts5OmK4Mg.PNG.ooza-/IMG_9198.PNG?type=w800"
                 },
             }],
             region: {
-                latitude: 45.52220671242907,
-                longitude: -122.6653281029795,
-                latitudeDelta: 0.04864195044303443,
-                longitudeDelta: 0.040142817690068,
+                latitude: 37.359426,
+                longitude: 127.104886,
+                latitudeDelta: 0.05,
+                longitudeDelta:  0.05,
             },
             lastItem: 0,
             coordi: [{
@@ -60,7 +57,6 @@ export default class AnyMap extends Component {
                 this.setState({
                     dataSources: responseJson.res,
                     firstlat: responseJson.res[0].Info_Latitude,
-
                 }, function () {
                 });
                 //alert(JSON.stringify(this.state.dataSources[0]));
@@ -80,18 +76,12 @@ export default class AnyMap extends Component {
                         longitude: this.state.dataSources[i].Info_Longitude
                     }
                 }
-                for (var i = 1; i < this.state.dataSources.length - 1; i++) {
-
-
-                }
-
                 this.state.region = {
                     latitude: this.state.dataSources[0].Info_Latitude,
                     longitude: this.state.dataSources[0].Info_Longitude,
-                    latitudeDelta: 0.04864195044303443,
-                    longitudeDelta: 0.040142817690068,
+                    latitudeDelta:  0.05,
+                    longitudeDelta:  0.05,
                 }
-
                 this.setState({
                     markers: this.state.markers,
                     coordi: this.state.coordi,
@@ -148,11 +138,7 @@ export default class AnyMap extends Component {
             params: [
                 {
                     key: "travelmode",
-                    value: "driving"        // may be "walking", "bicycling" or "transit" as well
-                },
-                {
-                    key: "dir_action",
-                    value: "navigate"       // this instantly initializes navigation using the given travel mode
+                    value: "transit"        // may be "walking", "bicycling" or "transit" as well
                 }
             ],
             waypoints: [

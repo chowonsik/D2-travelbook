@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import MainSafeMargin from './MainSafeMargin';
-import { Actions } from 'react-native-router-flux';
+import { Actions, Tabs, Scene } from 'react-native-router-flux';
+import MainOne from '../pages/MainOne';
 
 class MainDashFooter extends Component {
 
@@ -21,36 +22,64 @@ class MainDashFooter extends Component {
 
 
   //다른사람타임라인화면 보내는 함수
-  OtherTLOpener(){
+  OtherTLOpener() {
     Actions.mainone()
   }
 
   render() {
     return (
-      <View>
-        <View style={styles.footer}>
-          <MainSafeMargin />
-          <TouchableOpacity onPress={() => this.OtherTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/people-icon.png')} style={{
-              width: 26,
-              height: 24,
-            }} />
-          </TouchableOpacity>
-          <View style={styles.footerIcon}>
-            <Image source={require('../imgs/plus-icon.png')} style={{
-              width: 28,
-              height: 28,
-            }} />
-          </View>
-          <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
-            <Image source={require('../imgs/my-icon.png')} style={{
-              width: 26,
-              height: 26,
-            }} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.footerIndicator}></View>
-      </View>
+      <Tabs
+        showLabel={false}
+        lazy={true}
+        tabStyle={styles.tab}
+        tabBarStyle={styles.tabs}
+        labelStyle={styles.label}
+        swipeEnabled={false}
+      >
+        <Scene
+          hideNavBar
+          key="mainone"
+          component={MainOne}
+          icon={({ focused }) => (
+            <Icon
+              size={iconSize}
+              color={focused ? activeIconColor : iconColor}
+              name={`drop2`}
+              text={`My Water`}
+              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+            />
+          )}
+        />
+        <Scene
+          hideNavBar
+          key="mainone"
+          component={MainOne}
+          icon={({ focused }) => (
+            <Icon
+              size={iconSize}
+              color={focused ? activeIconColor : iconColor}
+              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+              name={`envelope`}
+              text={`Messages`}
+            />
+          )}
+        />
+      
+        <Scene
+          hideNavBar
+          key="mainone"
+          component={MainOne}
+          icon={({ focused }) => (
+            <Icon
+              size={iconSize}
+              color={focused ? activeIconColor : iconColor}
+              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
+              name={`home3`}
+              text={`My Account`}
+            />
+          )}
+        />
+      </Tabs>
     );
   }
 }

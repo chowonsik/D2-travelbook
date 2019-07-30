@@ -49,34 +49,69 @@ export default class OtherTLview extends Component {
     var uid = firebaseAuth.currentUser.uid;
 
     return (
-      <View style={{ backgroundColor: '#ffffff', padding: 2 }}>
+      <View style={styles.container} >
         <FlatList
           data={this.state.data}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
 
-            <View style={{ padding: 10, margin: 10, backgroundColor: '#ffffff', borderRadius: 10, borderWidth: 4, borderColor: 'black' }}>
-
+            <View style={styles.contentline}>
               <TouchableOpacity onPress={() => this.crudOpener(item.Trip_No)}>
-              <Text style={{ fontWeight: "bold", paddingBottom: 5, paddingTop: 5,fontSize:24 }}>
+              <Image source={{ uri: item.Trip_Img }}
+                  style={styles.img} />
+              <Text style={styles.title}>
                   {item.Trip_Title}
                 </Text>
-
-                <Text style={{ fontWeight: "bold", paddingBottom: 10, paddingTop: 5,fontSize:18 }}>
+                
+                <Text style={styles.content}>
                   {item.Trip_Content}
                 </Text>
+                <Text style={styles.content}>
+                  {item.Trip_Date}
+                </Text>
 
-                <Image source={{ uri: item.Trip_Img }}
-                  style={{ width: 300, height: 300 }} />
+              
+
               </TouchableOpacity>
 
             </View>
           }
           ListFooterComponent={this.myFooter}
-
-
         />
       </View>
     )
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    width:'100%',
+    backgroundColor: '#ffffff', 
+    padding: 10
+  },
+  contentline: {
+    width:'100%',
+    padding: 10, 
+    marginBottom:10,
+    backgroundColor: '#ffffff', 
+    borderRadius: 5,
+     borderWidth: 4, 
+     borderColor: 'black'
+  },
+  title: {
+    fontWeight: "bold",
+    paddingBottom: 5,
+    paddingTop: 5,
+    fontSize:20
+  },
+  content: {
+    paddingBottom: 10, 
+    paddingTop: 5,
+    fontSize:15
+  },
+  img: {
+    width: '100%', 
+    height: 300,
+    
+  }
+
+});
