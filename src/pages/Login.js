@@ -83,9 +83,6 @@ export default class Login extends Component {
                 <TouchableOpacity style={styles.button}> 
                     <Text style={styles.buttonText} onPress={() => this.naverLoginStart()}>Naver</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}> 
-                    <Text style={styles.buttonText} onPress={() => this.fetchProfile()}>Naverlogout</Text>
-                </TouchableOpacity>
                 <View style={styles.signupTextCont}> 
                     <Text style={styles.signupText}>Don't have an account yet? </Text>
                     <TouchableOpacity onPress={this.signup}><Text style={styles.signupButton}>Signup</Text></TouchableOpacity>

@@ -20,6 +20,10 @@ class MainDashFooter extends Component {
     Actions.userTL()
   }
 
+  //여행일지 작성화면으로 보내는 함수
+  Writetrip() {
+    Actions.writetrip()
+  }
 
   //다른사람타임라인화면 보내는 함수
   OtherTLOpener() {
@@ -28,58 +32,31 @@ class MainDashFooter extends Component {
 
   render() {
     return (
-      <Tabs
-        showLabel={false}
-        lazy={true}
-        tabStyle={styles.tab}
-        tabBarStyle={styles.tabs}
-        labelStyle={styles.label}
-        swipeEnabled={false}
-      >
-        <Scene
-          hideNavBar
-          key="mainone"
-          component={MainOne}
-          icon={({ focused }) => (
-            <Icon
-              size={iconSize}
-              color={focused ? activeIconColor : iconColor}
-              name={`drop2`}
-              text={`My Water`}
-              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
-            />
-          )}
-        />
-        <Scene
-          hideNavBar
-          key="mainone"
-          component={MainOne}
-          icon={({ focused }) => (
-            <Icon
-              size={iconSize}
-              color={focused ? activeIconColor : iconColor}
-              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
-              name={`envelope`}
-              text={`Messages`}
-            />
-          )}
-        />
-      
-        <Scene
-          hideNavBar
-          key="mainone"
-          component={MainOne}
-          icon={({ focused }) => (
-            <Icon
-              size={iconSize}
-              color={focused ? activeIconColor : iconColor}
-              textStyle={focused ? [styles.label, styles.activeLabel] : styles.label}
-              name={`home3`}
-              text={`My Account`}
-            />
-          )}
-        />
-      </Tabs>
+      <View>
+      <View style={styles.footer}>
+        <MainSafeMargin />
+        <TouchableOpacity onPress={() => this.OtherTLOpener()} style={styles.footerIcon}>
+          <Image source={require('../imgs/people-icon.png')} style={{
+            width: 26,
+            height: 24,
+          }} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.Writetrip()} style={styles.footerIcon}>
+          <Image source={require('../imgs/plus-icon.png')} style={{
+            width: 28,
+            height: 28,
+          }} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.UserTLOpener()} style={styles.footerIcon}>
+          <Image source={require('../imgs/my-icon.png')} style={{
+            width: 26,
+            height: 26,
+          }} />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.footerIndicator}></View>
+    </View>
+
     );
   }
 }
