@@ -77,4 +77,4 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 7. https://github.com/ivpusic/react-native-image-crop-picker
 8. https://github.com/react-native-seoul/react-native-naver-login
 9. https://www.npmjs.com/package/react-native-firebase
-10.http://kimeowgee.com/2018/10/react-native-user-login-sign-up-example-tutorial/
+10. http://kimeowgee.com/2018/10/react-native-user-login-sign-up-example-tutorial/
