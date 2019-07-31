@@ -29,4 +29,4 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 | ------------- | ------------- |
 | 김지환  | jihwankim94@gamil  |
 | 조원식  | Content Cell  |
-|   | Content Cell  |
+|  정유빈 | Content Cell  |
