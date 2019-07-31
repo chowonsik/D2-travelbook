@@ -64,4 +64,3 @@ https://github.com/Hardeepcoder
 https://github.com/bramus/react-native-maps-directions
 https://github.com/react-native-community/react-native-maps
 https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native
-
