@@ -18,6 +18,7 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 2. cd D2....
 3. npm install 
 4. react-native link , react-native link react-native-maps
+4.1 안드로이드 스튜디오에서 D2-travelbook/android 파일을 열고 빌드,sync 시키고 오류및 워닝은 무시하고 다음 으로 진행
 5. react-native run-android
 
 오류시 Issues 참고 해주시면 감사하겠습니다.
