@@ -30,7 +30,7 @@ export default class AnyMap extends Component {
                 latitude: 37.359426,
                 longitude: 127.104886,
                 latitudeDelta: 0.05,
-                longitudeDelta:  0.05,
+                longitudeDelta: 0.05,
             },
             lastItem: 0,
             coordi: [{
@@ -55,9 +55,7 @@ export default class AnyMap extends Component {
                     dataSources: responseJson.res,
                 }, function () {
                 });
-                alert(JSON.stringify(this.state.dataSources));
-                if(this.state.dataSources.length>0){
-
+                if (this.state.dataSources.length > 0) {
                     for (var i = 0; i < this.state.dataSources.length; i++) {
                         this.state.markers[i] = {
                             coordinate: {
@@ -77,8 +75,8 @@ export default class AnyMap extends Component {
                     this.state.region = {
                         latitude: this.state.dataSources[0].Info_Latitude,
                         longitude: this.state.dataSources[0].Info_Longitude,
-                        latitudeDelta:  0.05,
-                        longitudeDelta:  0.05,
+                        latitudeDelta: 0.05,
+                        longitudeDelta: 0.05,
                     }
                     this.setState({
                         markers: this.state.markers,
@@ -243,6 +241,7 @@ export default class AnyMap extends Component {
 
         return (
             <View style={styles.container}>
+<<<<<<< HEAD
                 <Header>
                     <Left>
                         <TouchableOpacity onPress={() => this.goback()}>
@@ -258,6 +257,10 @@ export default class AnyMap extends Component {
                         </TouchableOpacity>
                     </Right>
                 </Header>
+=======
+                <Text style={styles.header}>검은선은 Polyline 파란석은 차의 경로(미국지역가능) 
+                아래의 자세한 구글 경로는 대중교통입니다.</Text>
+>>>>>>> d8823201248a81fbb0e98c4fb339b585d6c82412
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
@@ -283,6 +286,19 @@ export default class AnyMap extends Component {
                             </MapView.Marker>
                         );
                     })}
+                    <Polyline
+                        coordinates={this.state.coordi}
+                        strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
+                        strokeColors={[
+                            '#7F0000',
+                            '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
+                            '#B24112',
+                            '#E5845C',
+                            '#238C23',
+                            '#7F0000'
+                        ]}
+                        strokeWidth={6}
+                    />
 
                     <MapViewDirections
                         origin={this.state.coordi[0]}
@@ -298,6 +314,7 @@ export default class AnyMap extends Component {
 
 
                 </MapView>
+
                 <Animated.ScrollView
                     horizontal
                     scrollEventThrottle={1}
@@ -320,15 +337,13 @@ export default class AnyMap extends Component {
                 >
                     {this.state.markers.map((marker, index) => (
                         <View style={styles.card} key={index}>
-                            <TouchableOpacity  style={styles.cardImage} onPress={() => this.saveDataDetail(marker)}>
-                            <Image
-                                source={marker.image}
-                                style={styles.cardImage}
-                                resizeMode="cover"
-                            />
+                            <TouchableOpacity style={styles.cardImage} onPress={() => this.saveDataDetail(marker)}>
+                                <Image
+                                    source={marker.image}
+                                    style={styles.cardImage}
+                                    resizeMode="cover"
+                                />
                             </TouchableOpacity>
-                            
-
 
                             <View style={styles.textContent}>
                                 <Text numberOfLines={1} style={styles.cardDescription}>
@@ -338,6 +353,7 @@ export default class AnyMap extends Component {
                         </View>
                     ))}
                 </Animated.ScrollView>
+
                 <Button style={styles.diretion} onPress={this.handleGetDirections} title="자세한 구글 경로 찾기" />
 
             </View>
@@ -350,6 +366,13 @@ export default class AnyMap extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    header: {
+        flex: 1,
+        width: "100%",
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
     },
     map: {
         flex: 8,
