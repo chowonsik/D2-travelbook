@@ -247,7 +247,6 @@ export default class AnyMap extends Component {
 
         return (
             <View style={styles.container}>
-<<<<<<< HEAD
                 <Header>
                     <Left>
                         <TouchableOpacity onPress={() => this.goback()}>
@@ -263,10 +262,6 @@ export default class AnyMap extends Component {
                         </TouchableOpacity>
                     </Right>
                 </Header>
-=======
-                <Text style={styles.header}>검은선은 Polyline 파란석은 차의 경로(미국지역가능) 
-                아래의 자세한 구글 경로는 대중교통입니다.</Text>
->>>>>>> d8823201248a81fbb0e98c4fb339b585d6c82412
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
