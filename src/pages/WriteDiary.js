@@ -80,7 +80,6 @@ export default class WriteDiary extends Component {
                     console.log(url)
                 })
                 .catch((error) => {
-
                 });
 
         })
@@ -91,17 +90,14 @@ export default class WriteDiary extends Component {
 
     //여행정보 저장하는 함수
     saveDate() {
-
         var uid = firebaseAuth.currentUser.uid;
         for (var i = 0; i < this.state.imagesURI.length; i++) {
             alert(this.state.imagesURI[i]);
             var sentence = this.state.lat[i].split(",");
             var sentence2 = this.state.lon[i].split(",");
-
             var dec = dms2dec([sentence[0], sentence[1], sentence[2]], this.state.latRef[i], [sentence2[0], sentence2[1], sentence2[2]], this.state.lonRef[i]);
             // dec[0] == 60.36123611111111, dec[1] == 5.370986111111111
-            alert(JSON.stringify(dec));
-            alert(this.state.lon[i]);
+            
             var tripinfo = {
                 Trip_No: 40,
                 Info_Image: this.state.imagesURI[i],

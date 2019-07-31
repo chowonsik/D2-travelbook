@@ -35,7 +35,6 @@ export default class Writetrip extends Component {
             width: 300,
             height: 400
         }).then(image => {
-            alert(JSON.stringify(image));
             this.setState({
                 imagepath: image.path,
                 imagemime: image.mime
@@ -96,7 +95,6 @@ export default class Writetrip extends Component {
                 uploadBlob.close()
                 imageRef.getDownloadURL().then((url) => {
                     this.state.imageUri = url;
-                    alert(this.state.imageUri);
                 }, function (error) {
                     console.log(error);
                 });
@@ -120,17 +118,18 @@ export default class Writetrip extends Component {
         };
 
         fetch('http://52.78.131.123/newtrip', {
-            method: "POST",//Request Type
-            body: JSON.stringify(qwe),//post body
-        })
-            .then()
-            //If response is in json then in success
-
-            //If response is not in json then in error
-            .catch((error) => {
-                alert(JSON.stringify(error));
-                console.error(error);
-            });
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },//Request Type
+            body: JSON.stringify({
+                User_ID: uid,
+                Trip_Title: this.state.Title,
+                Trip_Content: this.state.Content,
+                Trip_Img: this.state.imageUri
+            }),//post body
+        });
         db.ref(`trip/${uid}`).push(qwe);
         db.ref
         Actions.Writetrip;
@@ -140,7 +139,7 @@ export default class Writetrip extends Component {
         return (
 
             <View>
-                {/* <TextInput
+                <TextInput
                     label='Title'
                     value={this.state.Title}
                     onChangeText={Title => this.setState({ Title })}
@@ -150,31 +149,31 @@ export default class Writetrip extends Component {
                     multiline={true}
                     value={this.state.Content}
                     onChangeText={Content => this.setState({ Content })}
-                /> */}
+                />
                 <TextInput
-                        style={{ height: 100 }}
-                        onChangeText={(val) => {
-                            this.setState({
-                                Title: val
-                            })
-                        }}
-                        value={this.state.Title}
-                        multiline={true}
-                        placeholderTextColor='white'
-                        underlineColorAndroid='transparent'>
-                    </TextInput>
+                    style={{ height: 100 }}
+                    onChangeText={(val) => {
+                        this.setState({
+                            Title: val
+                        })
+                    }}
+                    value={this.state.Title}
+                    multiline={true}
+                    placeholderTextColor='white'
+                    underlineColorAndroid='transparent'>
+                </TextInput>
                 <TextInput
-                        style={{ height: 100 }}
-                        onChangeText={(val) => {
-                            this.setState({
-                                Content: val
-                            })
-                        }}
-                        value={this.state.Content}
-                        multiline={true}
-                        placeholderTextColor='white'
-                        underlineColorAndroid='transparent'>
-                    </TextInput>
+                    style={{ height: 100 }}
+                    onChangeText={(val) => {
+                        this.setState({
+                            Content: val
+                        })
+                    }}
+                    value={this.state.Content}
+                    multiline={true}
+                    placeholderTextColor='white'
+                    underlineColorAndroid='transparent'>
+                </TextInput>
                 <TouchableOpacity onPress={() => this.imagepicker()}>
 
                     <View style={styles.ImageContainer}>
@@ -208,7 +207,7 @@ const styles = StyleSheet.create({
 
     ImageContainer: {
         borderRadius: 10,
-        width:'100%',
+        width: '100%',
         height: 250,
         borderColor: '#9B9B9B',
         borderWidth: 1,
