@@ -1,4 +1,10 @@
+/*
+참조한 오픈 소스
+https://github.com/bramus/react-native-maps-directions
+https://github.com/react-native-community/react-native-maps
+https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native
 
+*/
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Animated, Image, Dimensions, Button, TouchableOpacity } from "react-native";
 import { Container, Body, Icon, Header, Left, Right, Title } from 'native-base';

@@ -42,11 +42,20 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 
 ## 실제 어플 이미지
 
+
 ### 로그인->메인
+
+![AC_ 20190731-225030](https://user-images.githubusercontent.com/38296895/62219364-26219e00-b3e9-11e9-8d80-baefd2709688.gif)
+
+![AC_ 20190731-225610](https://user-images.githubusercontent.com/38296895/62219371-29b52500-b3e9-11e9-8361-28dc9e2af881.gif)
 
 ### 메인->여행일지
 
+![AC_ 20190731-231725](https://user-images.githubusercontent.com/38296895/62219527-7c8edc80-b3e9-11e9-9ab4-2c92d893f4df.gif)
+
 ### 여행 일지쓰기
+
+![AC_ 20190731-225846](https://user-images.githubusercontent.com/38296895/62219538-80226380-b3e9-11e9-9fe8-4245f191f80c.gif)
 
 
 ## 개발자
@@ -54,5 +63,13 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 | 이름 name  | 메일 주소 email |Github |
 | ------------- | ------------- | ------------- |
 | 김지환  | jihwankim94@gamil.com  |https://github.com/jhktm  |
-| 조원식  | Content Cell  |Content Cell  |
+| 조원식  | wscho94@gmail.com  |https://github.com/chowonsik  |
 | 정유빈  | vini0428@gmail.com  |https://github.com/ShibaDoggy  |
+
+
+## 참고자료
+1. https://www.youtube.com/watch?v=7nQ3K1IkHss  // FlatList View 작성 및 Infinity Scroll, DB 연동 관련
+2. https://github.com/Hardeepcoder // FlatList View GIT         
+3. https://github.com/bramus/react-native-maps-directions  // MAP 경로 관련
+4. https://github.com/react-native-community/react-native-maps  // React-native MAP 관련
+5. https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native // Animated 관련
