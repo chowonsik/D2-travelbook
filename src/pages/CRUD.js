@@ -5,9 +5,7 @@ import { StyleSheet, Text, View, Animated, Image, Dimensions, Button, TouchableO
 
 import MapView, { Polyline } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
-
 import { Actions } from 'react-native-router-flux';
-
 import getDirections from 'react-native-google-maps-directions'
 
 const { width, height } = Dimensions.get("window");
@@ -18,7 +16,7 @@ export default class AnyMap extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSources: [],
+            //dataSources: [],
             markers: [{
                 coordinate: {
                     latitude: 37.359426,
@@ -56,31 +54,40 @@ export default class AnyMap extends Component {
             .then((responseJson) => {
                 this.setState({
                     dataSources: responseJson.res,
-                    firstlat: responseJson.res[0].Info_Latitude,
                 }, function () {
                 });
-                //alert(JSON.stringify(this.state.dataSources[0]));
-                for (var i = 0; i < this.state.dataSources.length; i++) {
-                    this.state.markers[i] = {
-                        coordinate: {
+                alert(JSON.stringify(this.state.dataSources));
+                if(this.state.dataSources.length>0){
+
+                    for (var i = 0; i < this.state.dataSources.length; i++) {
+                        this.state.markers[i] = {
+                            coordinate: {
+                                latitude: this.state.dataSources[i].Info_Latitude,
+                                longitude: this.state.dataSources[i].Info_Longitude
+                            },
+                            description: this.state.dataSources[i].Info_Content,
+                            image: {
+                                uri: this.state.dataSources[i].Info_Image,
+                            },
+                        }
+                        this.state.coordi[i] = {
                             latitude: this.state.dataSources[i].Info_Latitude,
                             longitude: this.state.dataSources[i].Info_Longitude
-                        },
-                        description: this.state.dataSources[i].Info_Content,
-                        image: {
-                            uri: this.state.dataSources[i].Info_Image,
-                        },
+                        }
                     }
-                    this.state.coordi[i] = {
-                        latitude: this.state.dataSources[i].Info_Latitude,
-                        longitude: this.state.dataSources[i].Info_Longitude
+                    this.state.region = {
+                        latitude: this.state.dataSources[0].Info_Latitude,
+                        longitude: this.state.dataSources[0].Info_Longitude,
+                        latitudeDelta:  0.05,
+                        longitudeDelta:  0.05,
                     }
-                }
-                this.state.region = {
-                    latitude: this.state.dataSources[0].Info_Latitude,
-                    longitude: this.state.dataSources[0].Info_Longitude,
-                    latitudeDelta:  0.05,
-                    longitudeDelta:  0.05,
+                    this.setState({
+                        markers: this.state.markers,
+                        coordi: this.state.coordi,
+                        region: this.state.region,
+                        lastItem: this.state.markers.length - 1,
+                    }, function () {
+                    });
                 }
                 this.setState({
                     markers: this.state.markers,
@@ -104,7 +111,6 @@ export default class AnyMap extends Component {
             if (index <= 0) {
                 index = 0;
             }
-
             clearTimeout(this.regionTimeout);
             this.regionTimeout = setTimeout(() => {
                 if (this.index !== index) {
