@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    TextInput,
+    Text,
     View,
     TouchableOpacity,
     Image,
@@ -11,7 +11,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import RNFetchBlob from "react-native-fetch-blob";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { db, firebaseAuth, storage } from '../../reducer/Firebase';
-// import { TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import MaterialHeader4 from "../components/MaterialHeader4";
 
 import { Actions } from 'react-native-router-flux';
@@ -95,6 +95,7 @@ export default class Writetrip extends Component {
                 uploadBlob.close()
                 imageRef.getDownloadURL().then((url) => {
                     this.state.imageUri = url;
+                    alert(url);
                 }, function (error) {
                     console.log(error);
                 });
@@ -110,7 +111,7 @@ export default class Writetrip extends Component {
     //여행일지 저장 함수
     saveDate() {
         var uid = firebaseAuth.currentUser.uid;
-        var qwe = {
+        var trip = {
             User_ID: uid,
             Trip_Title: this.state.Title,
             Trip_Content: this.state.Content,
@@ -129,10 +130,12 @@ export default class Writetrip extends Component {
                 Trip_Content: this.state.Content,
                 Trip_Img: this.state.imageUri
             }),//post body
+        }).then((response) => {
+            alert(response);
+            alert(JSON.stringify(response));
         });
-        db.ref(`trip/${uid}`).push(qwe);
-        db.ref
-        Actions.Writetrip;
+        db.ref(`trip/${uid}`).push(trip);
+        //Actions.Writediary({});
     }
 
     render() {
@@ -150,7 +153,7 @@ export default class Writetrip extends Component {
                     value={this.state.Content}
                     onChangeText={Content => this.setState({ Content })}
                 />
-                <TextInput
+                {/* <TextInput
                     style={{ height: 100 }}
                     onChangeText={(val) => {
                         this.setState({
@@ -173,7 +176,7 @@ export default class Writetrip extends Component {
                     multiline={true}
                     placeholderTextColor='white'
                     underlineColorAndroid='transparent'>
-                </TextInput>
+                </TextInput> */}
                 <TouchableOpacity onPress={() => this.imagepicker()}>
 
                     <View style={styles.ImageContainer}>
@@ -187,7 +190,7 @@ export default class Writetrip extends Component {
                 </TouchableOpacity>
                 <Button
                     onPress={() => this.saveDate()}
-                    title="Save"
+                    title="Continue"
                     color="#841584"
                     accessibilityLabel="Learn more about this purple button"
                 />

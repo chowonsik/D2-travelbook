@@ -24,7 +24,7 @@ export default class Routes extends Component {
                     <Scene key="signup" component={Signup} title="Sign up" />
                     <Scene key="mainone" component={MainOne} title="MainOne" hideNavBar />
                     <Scene key="userTL" component={UserTL} title="UserTL" hideNavBar />
-                    <Scene key="crud" component={CRUD} title="CRUD" />
+                    <Scene key="crud" component={CRUD} title="CRUD" hideNavBar/>
                     <Scene key="writediary" component={WriteDiary} title="WriteDiary" />
                     <Scene key="writetrip" component={Writetrip} title="Writetrip"/>
                     <Scene key="detail" component={Detail} title="detail" />
