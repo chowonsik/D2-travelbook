@@ -73,3 +73,8 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 3. https://github.com/bramus/react-native-maps-directions  // MAP 경로 관련
 4. https://github.com/react-native-community/react-native-maps  // React-native MAP 관련
 5. https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native // Animated 관련
+6. https://www.npmjs.com/package/react-native-router-flux
+7. https://github.com/ivpusic/react-native-image-crop-picker
+8. https://github.com/react-native-seoul/react-native-naver-login
+9. https://www.npmjs.com/package/react-native-firebase
+10.http://kimeowgee.com/2018/10/react-native-user-login-sign-up-example-tutorial/
