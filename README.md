@@ -14,19 +14,21 @@ for android and react-native
 ### Front-End
 * react-native
 
-### Front-End
+### Back-End
 * AWS
 * Nginx,php,mysql
 * firebase
 * javascript
 
-
-## [빌드 하는법 how to build] 
-
 * 서버 Github 주소
 https://github.com/jhktm/D2_react_native-travel_app_Server
 
-* init android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어있어야합니다.
+
+## [빌드 하는법 how to build] 
+
+
+### init 
+* android sdk,java jdk 가 설치 되어 있어야 하며, path 경로가 되어있어야합니다.
 
 * 빌드 biuld 순서 
 1. git clone 
