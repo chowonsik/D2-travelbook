@@ -55,8 +55,6 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 
 ### 여행 일지쓰기
 
-![AC_ 20190731-231725](https://user-images.githubusercontent.com/38296895/62219527-7c8edc80-b3e9-11e9-9ab4-2c92d893f4df.gif)
-
 ![AC_ 20190731-225846](https://user-images.githubusercontent.com/38296895/62219538-80226380-b3e9-11e9-9fe8-4245f191f80c.gif)
 
 
