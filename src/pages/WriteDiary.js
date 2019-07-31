@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, AsyncStorage, Keyboard, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, TextInput, TouchableOpacity, AsyncStorage, Keyboard, Image } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {db, firebaseAuth, storage} from '../../reducer/Firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
 import  RNFetchBlob  from "react-native-fetch-blob";
-import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Content } from 'native-base';
+import { Card, CardItem, Thumbnail, Body, Left, Right, Content } from 'native-base';
 var dms2dec = require('dms2dec');
 
 export default class WriteDiary extends Component {
@@ -76,7 +76,7 @@ export default class WriteDiary extends Component {
                 })
                 .then((url) => {
                     this.state.imagesURI[i] = url;
-                    console.log(url)
+                    
                 })
                 .catch((error) => {
                 });
@@ -91,14 +91,12 @@ export default class WriteDiary extends Component {
     saveDate() {
         var uid = firebaseAuth.currentUser.uid;
         for (var i = 0; i < this.state.imagesURI.length; i++) {
-            alert(this.state.imagesURI[i]);
             var sentence = this.state.lat[i].split(",");
             var sentence2 = this.state.lon[i].split(",");
             var dec = dms2dec([sentence[0], sentence[1], sentence[2]], this.state.latRef[i], [sentence2[0], sentence2[1], sentence2[2]], this.state.lonRef[i]);
             // dec[0] == 60.36123611111111, dec[1] == 5.370986111111111
-            
             var tripinfo = {
-                Trip_No: this.props.Trip_No,
+                Trip_No: Number(this.props.No),
                 Info_Image: this.state.imagesURI[i],
                 Info_Longitude: dec[1],
                 Info_Latitude: dec[0],
@@ -106,8 +104,20 @@ export default class WriteDiary extends Component {
                 Info_Content: this.state.Text[i]
             }
             fetch('http://52.78.131.123/info', {
-                method: "POST",//Request Type
-                body: JSON.stringify(tripinfo),//post body
+                method: 'POST',//Request Type
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                  },//Request Type
+                body: JSON.stringify({
+                    Trip_No: Number(this.props.No),
+                    Info_Image: this.state.imagesURI[i],
+                    Info_Longitude: dec[1],
+                    Info_Latitude: dec[0],
+                    Info_Date: this.state.imagesdate[i],
+                    Info_Content: this.state.Text[i]
+                }),
+                // body: JSON.stringify(tripinfo),//post body
             }).then()
                 //If response is in json then in success
 
@@ -118,12 +128,13 @@ export default class WriteDiary extends Component {
                 });
             //lert(JSON.stringify(tripinfo));
             db.ref(`diary/${uid}`).push(tripinfo);
+            this.popwrite();
         }
         // db.ref(`diary/${uid}`).push(this.state);
     }
 
     popwrite(){
-        Actions.pop();
+        Actions.popTo("mainone");
     }
 
     //여행정보 이미지 미리보기 및 이미지에 대한 텍스트 작성포멧
@@ -159,14 +170,20 @@ export default class WriteDiary extends Component {
     render() {
         return (
             <ScrollView>
-
-                <TouchableOpacity onPress={() => this.saveDate()} style={styles.addButton}>
-                    <Text style={styles.addButtonText}>Save</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.imagepicker()}>
-                    <Icon name="camera" size={240}></Icon>
+                    <View style={styles.ImageContainer}>
+                        <Icon name="camera" size={240}></Icon>
+                    </View>
                 </TouchableOpacity>
+                <Text>위의 카메라 버튼을 눌러 여행사진을 추가한후 사진마다 글이나 간단한 메모를 작성하고 save버튼을 눌러 저장해주세요</Text>
+                <Text>사진을 추가하면 20초정도 업로드시간이 필요합니다</Text>
                 {this.renderImages()}
+                <Button
+                    onPress={() => this.saveDate()}
+                    title="Save"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
+                />
             </ScrollView>
 
 
@@ -250,13 +267,15 @@ const styles = StyleSheet.create({
         shadowRadius: 1.5,
         overflow: "hidden"
     },
-    body: {
-        padding: 16
-    },
-    bodyText: {
-        color: "#424242",
-        fontSize: 14,
-        lineHeight: 20
+    ImageContainer: {
+        borderRadius: 10,
+        width: '100%',
+        height: 250,
+        borderColor: '#9B9B9B',
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     }
 
 });

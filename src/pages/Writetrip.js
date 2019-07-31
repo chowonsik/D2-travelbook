@@ -26,6 +26,7 @@ export default class Writetrip extends Component {
             imagepath: null,
             imagemime: '',
             imageUri: '',
+            Trip_No: ''
         };
     }
 
@@ -55,14 +56,7 @@ export default class Writetrip extends Component {
         const Fetch = RNFetchBlob.polyfill.Fetch
         // replace built-in fetch
         window.fetch = new Fetch({
-            // enable this option so that the response data conversion handled automatically
             auto: true,
-            // when receiving response data, the module will match its Content-Type header
-            // with strings in this array. If it contains any one of string in this array, 
-            // the response body will be considered as binary data and the data will be stored
-            // in file system instead of in memory.
-            // By default, it only store response data to file system when Content-Type 
-            // contains string `application/octet`.
             binaryContentTypes: [
                 'image/',
                 'video/',
@@ -95,7 +89,6 @@ export default class Writetrip extends Component {
                 uploadBlob.close()
                 imageRef.getDownloadURL().then((url) => {
                     this.state.imageUri = url;
-                    alert(url);
                 }, function (error) {
                     console.log(error);
                 });
@@ -131,11 +124,10 @@ export default class Writetrip extends Component {
                 Trip_Img: this.state.imageUri
             }),//post body
         }).then((response) => {
-            alert(response);
-            alert(JSON.stringify(response));
+            Trip_No = JSON.stringify(response.resp.data).split(",");
+            Actions.writediary({No: Trip_No[0].slice(14)});
         });
         db.ref(`trip/${uid}`).push(trip);
-        //Actions.Writediary({});
     }
 
     render() {
@@ -153,30 +145,6 @@ export default class Writetrip extends Component {
                     value={this.state.Content}
                     onChangeText={Content => this.setState({ Content })}
                 />
-                {/* <TextInput
-                    style={{ height: 100 }}
-                    onChangeText={(val) => {
-                        this.setState({
-                            Title: val
-                        })
-                    }}
-                    value={this.state.Title}
-                    multiline={true}
-                    placeholderTextColor='white'
-                    underlineColorAndroid='transparent'>
-                </TextInput>
-                <TextInput
-                    style={{ height: 100 }}
-                    onChangeText={(val) => {
-                        this.setState({
-                            Content: val
-                        })
-                    }}
-                    value={this.state.Content}
-                    multiline={true}
-                    placeholderTextColor='white'
-                    underlineColorAndroid='transparent'>
-                </TextInput> */}
                 <TouchableOpacity onPress={() => this.imagepicker()}>
 
                     <View style={styles.ImageContainer}>
@@ -188,6 +156,7 @@ export default class Writetrip extends Component {
                     </View>
 
                 </TouchableOpacity>
+                <Text>사진을 추가한후 20초정도 업로드 시간이 필요합니다. 20초후에 Continue버튼을 여행정보를 마저 입력해주세요.</Text>
                 <Button
                     onPress={() => this.saveDate()}
                     title="Continue"
@@ -228,19 +197,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#028b53',
         marginTop: 20
-    },
-    button: {
-
-        width: '80%',
-        backgroundColor: '#00BCD4',
-        borderRadius: 7,
-        marginTop: 20
-    },
-
-    TextStyle: {
-        color: '#fff',
-        textAlign: 'center',
-        padding: 10
     },
 
 });

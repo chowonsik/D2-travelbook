@@ -29,7 +29,9 @@ saveData =()=>{
 
     if(this.props.type !== 'Login')
     {
-        firebase_register(email, password)
+        firebase_register(email, password).then(function() {
+            Actions.pop();
+          })
         .catch((error) => {
             alert(error);
         })

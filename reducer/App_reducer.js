@@ -25,18 +25,25 @@ export const firebase_register = (email, pw) =>{
         usermsg: ''
       };
       fetch('http://52.78.131.123/user', {
-      method: "POST",//Request Type
-      body: JSON.stringify(user),//post body
-    })
-    .then()
-    //If response is in json then in success
-   
-    //If response is not in json then in error
-    .catch((error) => {
-      alert(JSON.stringify(error));
-      console.error(error);
-    });
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },//Request Type
+        body: JSON.stringify({
+          User_ID: uid,
+          User_Email: email,
+          User_Name: email
+        }),//post body
+      }).then()
+        //If response is in json then in success
+
+        //If response is not in json then in error
+        .catch((error) => {
+          alert(JSON.stringify(error));
+          console.error(error);
+        });
       db.ref(`users/${uid}`).set(user);
-    //   login(uid);
+      //   login(uid);
     })
   }
