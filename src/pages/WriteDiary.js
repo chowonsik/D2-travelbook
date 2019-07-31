@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
 import  RNFetchBlob  from "react-native-fetch-blob";
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Content } from 'native-base';
-
 var dms2dec = require('dms2dec');
 
 export default class WriteDiary extends Component {
@@ -62,7 +61,7 @@ export default class WriteDiary extends Component {
             window.Blob = Blob;
             let uploadBlob = null;
             let mime = 'image/jpg';
-            const imageRef = storage.ref('image').child(`${sessionId}${i}`);
+            const imageRef = storage.ref(`image/${this.props.Trip_No}`).child(`${sessionId}${i}`);
             fs.readFile(image, 'base64')
                 .then((data) => {
                     return Blob.build(data, { type: `${mime};BASE64` })
@@ -99,7 +98,7 @@ export default class WriteDiary extends Component {
             // dec[0] == 60.36123611111111, dec[1] == 5.370986111111111
             
             var tripinfo = {
-                Trip_No: 40,
+                Trip_No: this.props.Trip_No,
                 Info_Image: this.state.imagesURI[i],
                 Info_Longitude: dec[1],
                 Info_Latitude: dec[0],
@@ -121,10 +120,11 @@ export default class WriteDiary extends Component {
             db.ref(`diary/${uid}`).push(tripinfo);
         }
         // db.ref(`diary/${uid}`).push(this.state);
-        Actions.pop();
     }
 
-
+    popwrite(){
+        Actions.pop();
+    }
 
     //여행정보 이미지 미리보기 및 이미지에 대한 텍스트 작성포멧
     renderImages() {

@@ -7,8 +7,7 @@ https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Re
 */
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Animated, Image, Dimensions, Button, TouchableOpacity } from "react-native";
-
-
+import { Container, Body, Icon, Header, Left, Right, Title } from 'native-base';
 import MapView, { Polyline } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
 import { Actions } from 'react-native-router-flux';
@@ -133,6 +132,60 @@ export default class AnyMap extends Component {
         });
     }
 
+    refresh(){
+        fetch('http://52.78.131.123/info/' + this.props.item)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    dataSources: responseJson.res,
+                }, function () {
+                });
+                alert(JSON.stringify(this.state.dataSources));
+                if(this.state.dataSources.length>0){
+
+                    for (var i = 0; i < this.state.dataSources.length; i++) {
+                        this.state.markers[i] = {
+                            coordinate: {
+                                latitude: this.state.dataSources[i].Info_Latitude,
+                                longitude: this.state.dataSources[i].Info_Longitude
+                            },
+                            description: this.state.dataSources[i].Info_Content,
+                            image: {
+                                uri: this.state.dataSources[i].Info_Image,
+                            },
+                        }
+                        this.state.coordi[i] = {
+                            latitude: this.state.dataSources[i].Info_Latitude,
+                            longitude: this.state.dataSources[i].Info_Longitude
+                        }
+                    }
+                    this.state.region = {
+                        latitude: this.state.dataSources[0].Info_Latitude,
+                        longitude: this.state.dataSources[0].Info_Longitude,
+                        latitudeDelta:  0.05,
+                        longitudeDelta:  0.05,
+                    }
+                    this.setState({
+                        markers: this.state.markers,
+                        coordi: this.state.coordi,
+                        region: this.state.region,
+                        lastItem: this.state.markers.length - 1,
+                    }, function () {
+                    });
+                }
+                this.setState({
+                    markers: this.state.markers,
+                    coordi: this.state.coordi,
+                    region: this.state.region,
+                    lastItem: this.state.markers.length - 1,
+                }, function () {
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
 
     handleGetDirections = () => {
         const data = {
@@ -162,6 +215,14 @@ export default class AnyMap extends Component {
         Actions.detail({ marker: marker });
 
     }
+    // 여행정보작성 오프너
+    openwritediary = (Trip_No) => {
+        Actions.writediary({Trip_No: Trip_No});
+    }
+
+    goback = () => {
+        Actions.pop()
+    }
 
     render() {
 
@@ -186,8 +247,26 @@ export default class AnyMap extends Component {
 
         return (
             <View style={styles.container}>
+<<<<<<< HEAD
+                <Header>
+                    <Left>
+                        <TouchableOpacity onPress={() => this.goback()}>
+                            <Icon name='arrow-back' />
+                        </TouchableOpacity>
+                    </Left>
+                    <Body>
+                    <Title>{this.props.title}</Title>
+                    </Body>
+                    <Right>
+                        <TouchableOpacity onPress={() => this.openwritediary(this.props.item)}>
+                            <Icon name='add' />
+                        </TouchableOpacity>
+                    </Right>
+                </Header>
+=======
                 <Text style={styles.header}>검은선은 Polyline 파란석은 차의 경로(미국지역가능) 
                 아래의 자세한 구글 경로는 대중교통입니다.</Text>
+>>>>>>> d8823201248a81fbb0e98c4fb339b585d6c82412
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
@@ -376,4 +455,7 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: 'blue',
     },
+    headerContainer: {
+        padding: 0,
+    }
 });

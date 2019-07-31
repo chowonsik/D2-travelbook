@@ -41,8 +41,8 @@ export default class OtherTLview extends Component {
   }
 
   //CRUD 화면 오프너
-  crudOpener(no) {
-    Actions.crud(({ item: no }))
+  crudOpener(no, title) {
+    Actions.crud(({ item: no, title: title }))
   }
 
   render() {
@@ -56,7 +56,7 @@ export default class OtherTLview extends Component {
           renderItem={({ item }) =>
 
             <View style={styles.contentline}>
-              <TouchableOpacity onPress={() => this.crudOpener(item.Trip_No)}>
+              <TouchableOpacity onPress={() => this.crudOpener(item.Trip_No, item.Trip_Title)}>
               <Image source={{ uri: item.Trip_Img }}
                   style={styles.img} />
               <Text style={styles.title}>
