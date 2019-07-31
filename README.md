@@ -54,5 +54,5 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 | 이름 name  | 메일 주소 email |Github |
 | ------------- | ------------- | ------------- |
 | 김지환  | jihwankim94@gamil.com  |https://github.com/jhktm  |
-| 조원식  | Content Cell  |Content Cell  |
+| 조원식  | wscho94@gmail.com  |https://github.com/chowonsik  |
 | 정유빈  | vini0428@gmail.com  |https://github.com/ShibaDoggy  |
