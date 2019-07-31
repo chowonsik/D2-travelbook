@@ -60,7 +60,7 @@ https://github.com/jhktm/D2_react_native-travel_app_Server
 
 ## 참고자료
 https://www.youtube.com/watch?v=7nQ3K1IkHss  // FlatList View 작성 및 Infinity Scroll, DB 연동 관련
-https://github.com/Hardeepcoder
-https://github.com/bramus/react-native-maps-directions
-https://github.com/react-native-community/react-native-maps
-https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native
+https://github.com/Hardeepcoder // FlatList View GIT         
+https://github.com/bramus/react-native-maps-directions  // React-native MAP 관련
+https://github.com/react-native-community/react-native-maps  // React-native MAP 관련
+https://codedaily.io/tutorials/9/Build-a-Map-with-Custom-Animated-Markers-and-Region-Focus-when-Content-is-Scrolled-in-React-Native // Animated 관련
