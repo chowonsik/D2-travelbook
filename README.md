@@ -8,13 +8,13 @@
 for android and react-native
 
 ### Front-End
-*react-native
+* react-native
 
 ### Front-End
-*AWS
-*Nginx,php,mysql
-*firebase
-*javascript
+* AWS
+* Nginx,php,mysql
+* firebase
+* javascript
 
 
 ## [빌드 하는법 how to build] 
